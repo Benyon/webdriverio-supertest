@@ -1,0 +1,24 @@
+{
+    "URL" : {
+        "baseURL": "https://phptravels.net",
+        "homeURL": "/home", 
+        "authEndpoint": "/account/login",
+        "signUpEndpoint": "/account/signup"
+    }, 
+
+    "data": { 
+        "loginPayload" : {
+            "username": "test.email1@email.com",
+            "password": "Automation123"
+        },
+        
+        "signUpPayload" : {
+            "firstname": "John",
+            "lastname": "Doe",
+            "phone": "0750000000",
+            "email": "test.email1@email.com",
+            "password": "Automation123",
+            "confirmpassword": "Automation123"
+        }
+    }
+}
