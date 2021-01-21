@@ -6,7 +6,7 @@ const CommonUtil = require('../../helpers/utility/common.util');
 
 var testData;
 
-describe('Manual sign up', async () => {
+describe('Sign up', async () => {
 
     /**
      * Open page and create test data before each test.
@@ -37,7 +37,7 @@ describe('Manual sign up', async () => {
 
 });
 
-describe('API assisted login', async () => {
+describe('Login', async () => {
 
     /**
      * Delete all cookies before sessions starts.
