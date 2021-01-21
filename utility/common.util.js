@@ -14,13 +14,23 @@ class CommonUtil {
         await apiLogIn.syncCookies();
     }
     
-    signUpViaAPI = async () => {
+    signUpViaAPI = async (username, password) => {
+        let payload = config.data.signUpPayload
+
+        if (username!=null) {
+            payload.username = username;
+        }
+        if (password!=null) {
+            payload.password = password;
+        }
+
         let apiSignUp = new APIRequest(
             config.URL.baseURL, 
             config.URL.signUpEndpoint, 
-            config.data.signUpPayload, 
+            payload,
             '/home'
         );
+        
         await apiSignUp.postAuthentication();
         await apiSignUp.syncCookies();
     }

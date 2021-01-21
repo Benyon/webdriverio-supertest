@@ -17,6 +17,7 @@ module.exports = class TextField {
     async type(text) {
 
         await browser.pause(500);
+        
         let element = await $(this.selector);
 
         if (this.#waitForDisplayed) {
