@@ -2,7 +2,7 @@ const HomePage = require('../pageobjects/home.page')
 const RegisterPage = require('../pageobjects/register.page');
 const AccountPage = require('../pageobjects/account.page');
 const LoginPage = require('../pageobjects/login.page');
-const CommonUtil = require('../../utility/common.util');
+const CommonUtil = require('../../helpers/utility/common.util');
 
 var testData;
 
