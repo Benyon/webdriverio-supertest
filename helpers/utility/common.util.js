@@ -1,5 +1,5 @@
-const APIRequest = require('../apiRequest.helper');
 const config = require('../config.json');
+const APIRequest = require('../apiRequest.helper');
 const faker = require('faker');
 
 class CommonUtil {
