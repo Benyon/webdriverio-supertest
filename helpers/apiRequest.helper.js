@@ -41,8 +41,6 @@ module.exports = class APIRequest {
             .set('X-Requested-With','XMLHttpRequest')
             .set('Cookie', `${this.sessionCookie[0]}=${this.sessionCookie[1]}`)
             .send(this.#payload);
-        
-        console.warn(res.text); 
 
         if (res.text.includes('Email Already Exists.')) {
             throw error("Email already exists in domain.");
