@@ -35,15 +35,25 @@ module.exports = class APIRequest {
             await this.getInitialCookie();
         }
 
-        await this.#server
+        let res = await this.#server
             .post(this.#endpoint)
             .set('Content-Type','application/x-www-form-urlencoded; charset=UTF-8')
             .set('X-Requested-With','XMLHttpRequest')
             .set('Cookie', `${this.sessionCookie[0]}=${this.sessionCookie[1]}`)
             .send(this.#payload);
+        
+        console.warn(res.text); 
+
+        if (res.text.includes('Email Already Exists.')) {
+            throw error("Email already exists in domain.");
+        }
     }
 
-    async syncCookies() {
+    async syncCookies(manualSessionCookie) {
+        if (manualSessionCookie!=undefined) {
+            this.sessionCookie = manualSessionCookie; // Override with arguement if nessassary.
+        }
+
         await browser.url(this.#baseURL);
         await browser.setCookies({
             name: this.sessionCookie[0],

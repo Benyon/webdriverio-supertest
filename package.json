@@ -20,6 +20,7 @@
     "wdio-chromedriver-service": "^6.0.4"
   },
   "dependencies": {
+    "faker": "^5.1.0",
     "supertest": "^6.1.1"
   }
 }

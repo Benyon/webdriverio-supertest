@@ -12,16 +12,13 @@ class RegisterPage {
 
     signUpButton = new Button('.btn.signupbtn');
 
-    async fillFields(username=false, password=false) {
-        let _username = username ? username : 'john.johnson2@doe.com';
-        let _password = password ? password : 'superSecret10';
-
-        await this.firstName.type('firstName');
-        await this.lastName.type('lastName');
-        await this.mobileNumber.type('07500000000');
-        await this.emailField.type(_username);
-        await this.passwordField.type(_password);
-        await this.confirmPassword.type(_password);
+    async fillFields(testData) {
+        await this.firstName.type(testData.firstname);
+        await this.lastName.type(testData.lastname);
+        await this.mobileNumber.type(testData.phone);
+        await this.emailField.type(testData.email);
+        await this.passwordField.type(testData.password);
+        await this.confirmPassword.type(testData.password);
     }
 
     async submitFields() {

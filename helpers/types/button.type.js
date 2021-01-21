@@ -1,3 +1,5 @@
+const { time } = require("faker");
+
 module.exports = class Button {
 
     #waitForClickable;
@@ -43,6 +45,6 @@ module.exports = class Button {
 
     async isDisplayed(timeout) {
         // check how to set a timeout, could be options in wdio functionality or create own;
-        await expect($(this.selector)).toBeDisplayed()
+        await expect($(this.selector)).toBeDisplayed({wait: timeout!=undefined ? timeout : 10 * 1000}) // default wait of 10 seconds
     }
 }
