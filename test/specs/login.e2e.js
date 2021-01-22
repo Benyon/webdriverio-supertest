@@ -12,8 +12,8 @@ describe('Sign up', async () => {
      * Open page and create test data before each test.
      */
     beforeEach(async () => {
-        browser.deleteAllCookies();
-        HomePage.open();
+        await browser.deleteAllCookies();
+        await HomePage.open();
         testData = CommonUtil.createRandomTestData();
     })
 
@@ -45,8 +45,8 @@ describe('Login', async () => {
      * Send test data to signup endpoint to be used in tests.
      */
     beforeEach(async () => {
-        browser.deleteAllCookies();
-        HomePage.open();
+        await browser.deleteAllCookies();
+        await HomePage.open();
         testData = CommonUtil.createRandomTestData();
         await CommonUtil.generateTestData(testData); 
     })
