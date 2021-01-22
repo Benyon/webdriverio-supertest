@@ -23,7 +23,6 @@ describe('Sign up', async () => {
         await RegisterPage.fillFields(testData);
         await RegisterPage.submitFields();
 
-        // Assert
         await AccountPage.profileMenuOption.isDisplayed();
     });
 
@@ -31,7 +30,6 @@ describe('Sign up', async () => {
         await CommonUtil.signUpViaAPI(testData);
         await AccountPage.open();
 
-        // Assert
         await AccountPage.profileMenuOption.isDisplayed();
     });
 

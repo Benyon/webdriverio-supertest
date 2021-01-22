@@ -22,17 +22,28 @@ module.exports = class APIRequest {
         this.sessionCookie = null
     }
 
-    async getInitialCookie() {
+    async getInitialCookie(cookieName) {
+        let cookieFromResponse = null;
         this.#get = await this.#server.get(this.#getEndpoint);
-        let verboseCookie = this.#get.res.rawHeaders[13];
-        let cookie = verboseCookie.substr("0", verboseCookie.indexOf(';'));
-        this.sessionCookie = cookie.split('=');
+        let headers = this.#get.res.rawHeaders
+        headers.forEach((header) => { 
+            if (header.includes(cookieName)) {
+                cookieFromResponse = header.substr("0", header.indexOf(';'));
+            }
+        });
+        if (cookieFromResponse==null) {
+            throw 'Could not find cookie with provided arguement.';
+        }
+        this.sessionCookie = cookieFromResponse.split('=');
     }
 
-    async postAuthentication() {
+    async postAuthentication(cookie=null) {
         if (this.sessionCookie==null) {
+            if (cookie===null) {
+                throw 'Session cookie has not been generated, use APIRequest.getInitialCookie(arg) or provide a cookie name when executing this method.';
+            }
             console.warn("Requesting cookie from main domain, this may want to be requested manually");
-            await this.getInitialCookie();
+            await this.getInitialCookie(cookie);
         }
 
         let res = await this.#server
@@ -43,7 +54,7 @@ module.exports = class APIRequest {
             .send(this.#payload);
 
         if (res.text.includes('Email Already Exists.')) {
-            throw error("Email already exists in domain.");
+            throw 'Email already exists in domain.';
         }
     }
 

@@ -11,6 +11,8 @@ class CommonUtil {
      */
     logInViaAPI = async (testData) => {
 
+        let cookieName = config.Cookie.phptravels;
+
         let payload = {
             "username" : testData.email,
             "password" : testData.password
@@ -22,7 +24,7 @@ class CommonUtil {
             payload,
             '/home'
         );
-        await apiLogIn.postAuthentication();
+        await apiLogIn.postAuthentication(cookieName);
         await apiLogIn.syncCookies();
     }
     
@@ -32,6 +34,8 @@ class CommonUtil {
      * @return {Promise<T>} Returns empty promise.
      */
     signUpViaAPI = async (testData) => {
+    
+        let cookieName = config.Cookie.phptravels;
 
         let payload =  {
             "firstname": testData.firstname,
@@ -49,7 +53,7 @@ class CommonUtil {
             '/home'
         );
 
-        await apiSignUp.postAuthentication();
+        await apiSignUp.postAuthentication(cookieName);
         await apiSignUp.syncCookies();
     }
 
@@ -80,6 +84,8 @@ class CommonUtil {
      */
     generateTestData = async (testData) => {
 
+        let cookieName = config.Cookie.phptravels;
+
         let payload = {
             "firstname": testData.firstname,
             "lastname": testData.lastname,
@@ -96,7 +102,7 @@ class CommonUtil {
             '/home'
         );
 
-        await apiRandomData.postAuthentication(true);
+        await apiRandomData.postAuthentication(cookieName);
     }
 
 }

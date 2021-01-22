@@ -1,5 +1,3 @@
-const { time } = require("faker");
-
 module.exports = class Button {
 
     #waitForClickable;
