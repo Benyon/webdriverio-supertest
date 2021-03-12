@@ -4,7 +4,7 @@ A WebDriverIO and SuperTest project testing the functionality of 'phptravels.net
 
 PHPtravels.net does not retain login information, therefore we will need to use API requests to set up test data.
 
-This proof of concept shows to implementation of API requests to quickly send requests to the server to set up test data or test scenarios.
+This proof of concept shows the implementation of API calls to quickly send requests to the server to set up test data for test scenarios.
 
 ## Versions
 <table>
